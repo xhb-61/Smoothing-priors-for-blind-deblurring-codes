@@ -6,19 +6,13 @@ Official MATLAB implementation of the paper:
 > SIAM Journal on Imaging Sciences, 18(1):216-245, 2025.
 > DOI: [10.1137/24M1637696](https://doi.org/10.1137/24M1637696)
 
-## Overview
+## Abstract
 
-This repository provides the demo code for a blind image deblurring method based on image smoothing priors. The method estimates both the blur kernel and an intermediate latent image from a single blurry input image.
+Blind image deblurring aims to recover a sharp latent image and estimate the unknown blur kernel from a blurry observation. This work introduces a deblurring algorithm built on image smoothing priors. The key observation is that salient structural edges are especially important for blur-kernel estimation, while fine textures and unnecessary details can disturb the estimation process.
 
-The main idea is to preserve salient structural edges while suppressing small textures and artifacts that may mislead blur-kernel estimation. The implementation combines:
+To address this, the method uses smoothing-inspired regularization to preserve meaningful edges and suppress distracting artifacts during intermediate latent-image estimation. The model combines relative total variation with nonconvex intensity and gradient priors, and it is further extended to binary-image and non-uniform deblurring settings.
 
-- relative total variation (RTV) as an image smoothing prior,
-- nonconvex pixel and gradient regularization with $L_p$/$L_q$ terms,
-- a coarse-to-fine multi-scale kernel estimation framework,
-- half-quadratic splitting for the optimization subproblems,
-- a template/interpolation-based solver for the $L_p$ minimization step.
-
-The released demo includes MATLAB code and two sample blurred images.
+The optimization problem is solved with a half-quadratic splitting strategy. A template-based interpolation scheme is also used for the $L_p$ minimization subproblem. Experiments on multiple datasets show that the proposed method can estimate blur kernels accurately and reduce deblurring artifacts compared with related methods.
 
 ## Repository Contents
 
